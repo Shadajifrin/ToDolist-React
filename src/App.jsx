@@ -22,7 +22,7 @@ function App() {
     let complete=todos.map((list)=>{
       if(list.id===id)
       {
-      return({...list,status: !list.status})
+      return({...list,status:!list.status})
       }
       return list
     })
