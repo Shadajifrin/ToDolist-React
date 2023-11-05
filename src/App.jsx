@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { IoMdDoneAll } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
-
+import {AiFillPlusCircle} from "react-icons/ai";
 function App() {
   const [todos, setTodos] = useState([])
   const [todo, setTodo] = useState('')
@@ -11,9 +11,11 @@ function App() {
     e.preventDefault();
   }
   const addTodo = () => {
-    setTodos([...todos, {list:todo,id:Date.now(),status:false}]);
-    console.log(todos)
-    setTodo('')
+    if(todo !==''){
+      setTodos([...todos, {list:todo,id:Date.now(),status:false}]);
+      console.log(todos)
+      setTodo('')
+    }
   }
   const onDelete=(id)=>{
     setTodos( todos.filter((todo)=>todo.id !== id))
@@ -33,9 +35,9 @@ function App() {
       <h1> Shada's ToDo List</h1>
       <form className='todo-input' onSubmit={handleSubmit}>
         <input type="text" value={todo} className='form-control' placeholder='Enter your todos' onChange={(e) => setTodo(e.target.value)} />
-        <button className="todo-button" type="submit">
-          <i onClick={addTodo} className="fa fa-plus"></i>
-        </button>
+    
+          <AiFillPlusCircle onClick={addTodo} color='green'/>
+         
       </form>
       <div className="todos">
         <ul>
